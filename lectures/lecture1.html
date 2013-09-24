@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>Введение в языки программирования</title>
+		<title>Введение в разработку ПО</title>
 
 		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
 		<meta name="author" content="Hakim El Hattab">
@@ -36,11 +36,9 @@
 
 			<div class="slides">
 				<section>
-					<h2>Введение в языки программирования</h2>
-					<h4>Лекция №1 курса "Разработка ПО" (ХНУРЭ)</h3>
-					<p>
-						<small>Александр Коротких, <a href="http://alexkorotkikh.com">alexkorotkikh.com</a></small>
-					</p>
+					<h1>Введение в разработку ПО</h1>
+					<h4>Лекция #1 курса "Разработка ПО" (ХНУРЭ)</h3>
+
 				</section>
 
 				<section>
@@ -94,9 +92,84 @@
 							</h3>
 						</div>
 					</section>
+					<section data-background="img/swiss-knife.jpg">
+						<div style="background: rgba(0, 0, 0, .6); padding-top: 10px; padding-bottom: 0px">
+							<h2>Главное - выбрать правильный инструмент</h2>
+						</div>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Компилируемые</h2>
+						<h5>vs</h5>
+						<h2>Интерпретируемые</h2>
+					</section>
+					<section>
+						<div style="float: left; width: 45%">
+							<h2>Compiler</h2>
+							<ul>
+								<li class="fragment" data-fragment-index="1">Принимает на вход программу на языке A</li>
+								<li class="fragment" data-fragment-index="2">Отдаёт на выходе программу на языке B</li>
+								<li class="fragment" data-fragment-index="3">Данные передаются в программу В, которая генерирует конечный результат</li>
+								<li class="fragment" data-fragment-index="7"><span style="font-weight: bold;">Уменьшает количество ошибок</span></li>
+							</ul>
+						</div>
+
+						<div style="float: right; width: 45%">
+							<h2>Interpreter</h2>
+							<ul>
+								<li class="fragment" data-fragment-index="4">Принимает на вход программу на языке A</li>
+								<li class="fragment" data-fragment-index="5">... и данные тоже</li>
+								<li class="fragment" data-fragment-index="6">Выполняет программу вместе с переданными данными и выдаёт результат</li>
+								<li class="fragment" data-fragment-index="8"><span style="font-weight: bold;">Уменьшает время разработки</span></li>
+							</ul>
+						</div>
+					</section>
+
+					<section>
+						<div style="float: left; width: 48%">
+							<h2>Static typing</h2>
+							<pre>
+								<code data-trim class="java">
+String a = "Hello, world!";
+int b = a.length();
+								</code>
+							</pre>
+							<p class="fragment" data-fragment-index="1">Чаще всего компилируемые - компилятор может проверить соответствие типов</p>
+						</div>
+
+						<div style="float: right; width: 48%">
+							<h2>Dinamic typing</h2>
+							<pre>
+								<code data-trim class="javascript">
+var a = "Hello, world!"
+var b = a.length()
+								</code>
+							</pre>
+							<p class="fragment" data-fragment-index="2">Чаще всего интерпретируемые - интерпретатор может узнать о типах только во время выполнения</p>
+						</div>
+					</section>
+				</section>				
+				<section data-background="#fff">
+					<div style="background: rgba(0, 0, 0, .6); padding-top: 10px; padding-bottom: 0px">
+						<h2>Современные ЯП<h2>
+					</div>
+					<img src="img/lang-chart.png"/>
+				</section>
+				<section>
+					<h1>Q&A</h1>
+					<p>Есть вопросы?</p>
 				</section>
 
-				
+				<section>
+					<h1>Спасибо за внимание!</h1>
+					<ul>
+						<li>vk.com/alexkorotkikh</li>
+						<li>twitter.com/alexkorotkikh</li>
+						<li>github.com/alexkorotkikh</li>
+					</ul>
+				</section>
+
 			</div>
 
 		</div>
