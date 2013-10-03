@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Введение в разработку ПО</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<div class="slides">
+				<section>
+					<h1>Базовые понятия</h1>
+					<h4>Лекция #2 курса "Разработка ПО" (ХНУРЭ)</h3>
+				</section>
+
+				<section>
+					<h2>Agenda</h2>
+					<ul>
+						<li>Типы данных</li>
+						<li>Операции над примитивами</li>
+						<li>Ветвления</li>
+						<li>Циклы</li>
+						<li>Функции</li>
+						<li>Рекурсия</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Типы данных</h2>
+					<div style="float: left; width: 48%">
+						<h2>Java</h2>
+						<pre>
+							<code data-trim class="java">
+byte b = 127; // 2^8
+short s = 8; // 2^16
+int i = ; // 2^32
+long l = ; //2^64
+float f = 2.5;
+double d = 452345.6458745;
+char c = 'ы';
+boolean b = true;
+int[] a = { 1, 2, 3, 4, 5 }
+Object o = new Object(); // soon!
+							</code>
+						</pre>
+					</div>
+
+					<div style="float: right; width: 48%">
+						<h2>Javascript</h2>
+						<pre>
+							<code data-trim class="javascript">
+var number = 123456789
+var string = "Avada Kedavra!"
+var array = [1, 2, 3, 4, 5]
+var object = { a: "Answer", b: 42 }
+							</code>
+						</pre>
+					</div>
+				</section>				
+			
+				<section>
+					<h2>Операции над примитивами</h2>
+					<div style="float: left; width: 48%">
+						<h2>Java</h2>
+						<pre>
+							<code data-trim class="java">
+int a = 3 + 2; // a == 5
+int b = a / 2; // b == 3 (!)
+double d1 = a / 2; // b == 3.0 (!!!)
+double d2 = a / 2.0; 
+boolean t = d2 == 2.5 // true
+							</code>
+						</pre>
+					</div>
+
+					<div style="float: right; width: 48%">
+						<h2>Javascript</h2>
+						<pre>
+							<code data-trim class="javascript">
+var a = 3 + 2 // a == 5
+var b = a / 2 // b == 2.5
+var t1 = a == '5' // true
+var t2 = a === '5' // false
+							</code>
+						</pre>
+					</div>
+				</section>	
+
+				<section>
+					<h2>Ветвления (1)</h2>
+					<div style="float: left; width: 48%">
+						<h2>Java</h2>
+						<pre>
+							<code data-trim class="java">
+// int a = 3, b = 5, max = 0;
+if (a > b) {
+    max = a;		
+} else {
+    max = b
+}
+							</code>
+						</pre>
+					</div>
+
+					<div style="float: right; width: 48%">
+						<h2>Javascript</h2>
+						<pre>
+							<code data-trim class="javascript">
+// var a = 3, b = 5, max = 0;
+if (a > b) {
+    max = a;		
+} else {
+    max = b
+}							</code>
+						</pre>
+					</div>
+				</section>	
+
+				<section>
+					<h2>Ветвления (2)</h2>
+					<div style="float: left; width: 48%">
+						<h2>Java</h2>
+						<pre>
+							<code data-trim class="java">
+switch (a) {
+    case 1: 
+        System.out.println("One");
+    case 2: 
+        System.out.println("Two");
+    case 3: 
+        System.out.println("Three");
+    default: 
+        System.out.println("Other");
+}
+							</code>
+						</pre>
+					</div>
+
+					<div style="float: right; width: 48%">
+						<h2>Javascript</h2>
+						<pre>
+							<code data-trim class="javascript">
+?
+							</code>
+						</pre>
+					</div>
+				</section>	
+
+				<section>
+					<h2>Циклы (1)</h2>
+					<div style="float: left; width: 48%">
+						<h2>Java</h2>
+						<pre>
+							<code data-trim class="java">
+int i = 0;
+while (i < 10) {
+    System.out.println(i++);
+}
+// or
+do {
+    System.out.println(i++);
+} while (i == 10)
+							</code>
+						</pre>
+					</div>
+
+					<div style="float: right; width: 48%">
+						<h2>Javascript</h2>
+						<pre>
+							<code data-trim class="javascript">
+var i = 0;
+while (i < 10) {
+    alert(i++);
+}
+// or
+do {
+    alert(i++);
+} while (i == 10)
+							</code>
+						</pre>
+					</div>
+				</section>	
+
+				<section>
+					<h2>Циклы (2)</h2>
+					<div style="float: left; width: 48%">
+						<h2>Java</h2>
+						<pre>
+							<code data-trim class="java">
+int[] d = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }
+for (int i = 0; i < d.length; i++) {
+    System.out.println(d[i]);
+}
+// or
+for (int digit : d) {
+    System.out.println(digit);
+}
+							</code>
+						</pre>
+					</div>
+
+					<div style="float: right; width: 48%">
+						<h2>Javascript</h2>
+						<pre>
+							<code data-trim class="javascript">
+var d = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
+for (var i = 0; i < d.length; i++) {
+    alert(d[i]);
+}
+// or
+for (var digit in d) {
+    alert(digit);
+}							
+							</code>
+						</pre>
+					</div>
+				</section>
+				
+				<section>
+					<h2>Функции</h2>
+					<div style="float: left; width: 48%">
+						<h2>Java</h2>
+						<pre>
+							<code data-trim class="java">
+int sum(int... args) {
+    int result = 0;
+    for (int arg : args) {
+        result = result + arg;
+    }
+    return result;
+};
+
+int i1 = sum(1, 2, 3, 4); // i1 == 10
+int i2 = sum(); // i2 == ?
+							</code>
+						</pre>
+					</div>
+
+					<div style="float: right; width: 48%">
+						<h2>Javascript</h2>
+						<pre>
+							<code data-trim class="javascript">
+function sum(args) {
+    var result = 0
+    for (var arg in args)
+        result = result + arg
+     return result;
+}
+
+var i1 = sum([1, 2, 3, 4]) // i1 = 10
+var i2 = sum() // i2 == ?
+							</code>
+						</pre>
+					</div>					
+				</section>	
+	
+				<section>
+					<h2>Рекурсия</h2>
+					<div style="float: left; width: 48%">
+						<h2>Java</h2>
+						<pre>
+							<code data-trim class="java">
+int factorial(int n) {
+    if (n == 0 || n == 1 || n == 2) 
+        return n;
+    else
+        return n * factorial(n - 1);
+}
+							</code>
+						</pre>
+					</div>
+
+					<div style="float: right; width: 48%">
+						<h2>Javascript</h2>
+						<pre>
+							<code data-trim class="javascript">
+function factorial(var n) {
+    if (n == 0 || n == 1 || n == 2) 
+        return n
+    else 
+        return n * factorial(n - 1)
+}
+							</code>
+						</pre>
+					</div>					
+				</section>				
+				<section>
+					<h1>Q&A</h1>
+					<p>Есть вопросы?</p>
+				</section>
+
+				<section>
+					<h1>Спасибо за внимание!</h1>
+					<ul>
+						<li>vk.com/alexkorotkikh</li>
+						<li>twitter.com/alexkorotkikh</li>
+						<li>github.com/alexkorotkikh</li>
+					</ul>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+		</script>
+	</body>
+</html>
