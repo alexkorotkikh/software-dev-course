@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Version control. Build process. Unit testing.</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<div class="slides">
+				<section>
+					<h1>Version control.</h1><h1>Build process.</h1><h1>Unit testing.</h1>
+					<h4>Lecture #4 of HardcoreDevCourse</h3>
+				</section>
+
+				<section>
+					<h2>Agenda</h2>
+					<ul>
+						<li>Version control 101</li>
+						<li>Centralized and decentralized VCS</li>
+						<li>Build process</li>
+						<li>Maven</li>
+						<li>Unit testing</li>
+						<li>Test coverage</li>
+						<li>Mocks</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>VCS (I): Why?</h2>
+					<uk>
+						<li>Project history (what, when, who, why)</li>
+						<li>Collaboration</li>
+						<li>Backuping</li>
+					</uk>
+				</section>				
+			
+				<section>
+					<h2>VCS (II): SVN vs Git</h2>
+					<p><b>SVN</b> - most popular centralized VCS. Client has only one piece of project history, he is currectly working with, called <i>working copy</i>. Every save or load opertaions requires connection to the server.</p>
+					<p><b>Git</b> - most popular decentralized VCS. Client has <i>a clone</i> of the whole <i>repository</i>. All changes can be done locally and synchonize with a server when it is needed.</p>
+				</section>	
+
+				<section>
+					<h2>VCS (III): Git Terminology</h2>
+					<ul>
+						<li><b>Clone</b> - copying whole project history from remote server to the client</li>
+						<li><b>Commit</b> - saving changes were made on the client</li>
+						<li><b>Push</b> - sending changes made and saved on the client to the server</li>
+						<li><b>Pull</b> - loading changes from server to the client</li>
+						<li><b>Checkout</b> - changing between various states of working copy on the client</li>
+
+						<p>Need help? <a hred="http://git-scm.com/documentation">http://git-scm.com/documentation</a>
+					</ul>
+				</section>	
+
+				<section>
+					<h2>Homework, part 1</h2>
+					<ul>
+						<li>Create a git repos for your previous homeworks</li>
+						<li>Upload them to Github</li>
+					</ul>
+				</section>	
+
+				<section>
+					<h2>Build process</h2>
+					<p>Process of converting source code files into standalone software artifact(s) that can be run on a computer.<p>
+				</section>	
+
+
+				<section>
+					<h2>Build steps</h2>
+					<ul>
+						<li>Compiling source code</li>
+						<li>Packaging compiled code</li>
+						<li>Running tests</li>
+						<li>Deployment to production systems</li>
+						<li>Creating documentation and/or release notes</li>
+					</ul>
+				</section>	
+
+				<section>
+					<h2>Maven (I): Dependencies</h2>
+					<pre>
+						<code data-trim class="xml">
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	
+	<groupId>org.hardcoredevcourse</groupId>
+	<artifactId>binary-tree</artifactId>
+	<version>1.0</version>
+	<packaging>jar</packaging>
+
+...
+
+</project>
+						</code>
+					</pre>
+				</section>
+				
+				<section>
+					<h2>Maven (II): Dependencies</h2>
+					<pre>
+						<code data-trim class="xml">
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+...
+    <dependencies>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-servlet</artifactId>
+            <version>${jetty.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.10</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+...
+</project>
+						</code>
+					</pre>
+				</section>
+
+	
+				<section>
+					<h2>Maven (III): Releases</h2>
+					<pre>
+						<code data-trim class="xml">
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+...
+    <distributionManagement>
+        <repository>
+            <id>my-super-releases</id>
+            <url>http://mysuperserver.org/nexus/content/repositories/releases</url>
+        </repository>
+    </distributionManagement>
+...
+</project>
+						</code>
+					</pre>
+				</section>				
+
+				<section>
+					<h2>And much more</h2>
+
+					<p>Use <a href="http://maven.apache.org/users/index.html">http://maven.apache.org/users/index.html</a> for help</p>		
+				</section>
+				
+				<section>
+					<h1>Homework, part 2</h1>
+					<ul>
+						<li>Set up Maven for your binary tree homework.</li>
+						<li>Don't forget to update you Github repo :)</li>
+					</ul>
+				</section>
+
+				<section>
+					<h1>Q&A</h1>
+				</section>
+
+				<section>
+					<h1>Thx!</h1>
+					<ul>
+						<li>vk.com/alexkorotkikh</li>
+						<li>twitter.com/alexkorotkikh</li>
+						<li>github.com/alexkorotkikh</li>
+					</ul>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+		</script>
+	</body>
+</html>
