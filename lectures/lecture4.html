@@ -49,7 +49,6 @@
 						<li>Maven</li>
 						<li>Unit testing</li>
 						<li>Test coverage</li>
-						<li>Mocks</li>
 					</ul>
 				</section>
 
@@ -190,6 +189,66 @@
 						<li>Don't forget to update you Github repo :)</li>
 					</ul>
 				</section>
+
+				<section>
+					<h2>Unit testing</h2>
+					<p>At a high-level, unit testing refers to the practice of testing certain functions and areas – or units – of our code. This gives us the ability to verify that our functions work as expected</p>
+					<p class="fragment">That is to say that for any function and given a set of inputs, we can determine if the function is returning the proper values and will gracefully handle failures during the course of execution should invalid input be provided.</p>
+				</section>	
+
+				<section>
+					<h2>Example (I): Class to test</h2>
+					<pre>
+						<code data-trim class="java">
+public class Rectangle {
+    private int leftHighX;
+    private int leftHighY;
+    private int rightLowX;
+    private int rightLowY;
+    
+    public Rectangle(int leftHighX, int leftHighY, 
+                     int rightLowX, int rightLowY) {}
+    
+    public int area() {
+         return (rightLowX - leftHighX) * (leftHighY - rightLowY);
+    }
+}
+						</code>
+					</pre>
+				</section>
+
+				<section>
+					<h2>Example (II): Test case</h2>
+					<pre>
+						<code data-trim class="java">
+import static org.junit.Assert.assertEquals;
+
+public class RectangleTest {
+    @Test
+    public int testArea() {
+         Rectangle rec = new Rectangle(0, 0, 1, 1);
+         assertEquals(1, rec.area());
+    }
+
+    @Test
+    public int testArea_negativePoints() {
+        Rectangle rec = new Rectangle(-1, -1, 2, 3);
+        assertEquals(12, rec.area());
+    }
+}
+						</code>
+					</pre>
+				</section>
+
+				<section>
+					<h2>Homework, part 3</h2>
+					<ul>
+						<li>Create set of test cases for your implementation of binary tree</li>
+						<li>Use Maven to control dependencies (JUnit library) and run tests</li>
+						<li>If it's not enough for you - get know <a href="http://travis-ci.org">Travis CI</a> and set up it for you project.</li>
+					</ul>
+				</section>
+
 
 				<section>
 					<h1>Q&A</h1>
