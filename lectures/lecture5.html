@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Java Collections Framework</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<div class="slides">
+				<section>
+					<h1>Java Collections Framework.</h1>
+					<h4>Lecture #5 of HardcoreDevCourse</h3>
+				</section>
+
+				<section>
+					<h2>Agenda</h2>
+					<ul>
+						<li>Big-O notation</li>
+						<li>Collections: interfaces vs implementation</li>
+						<li>List</li>
+						<li>Set</li>
+						<li>Map</li>
+					</ul>
+				</section>
+
+				<section>
+					<section>
+						<h1>Big-O notation</h1>
+						<blockquote>
+							Big O notation is used to describe the performance or complexity of an algorithm. Big O specifically describes the worst-case scenario, and can be used to describe the execution time required by an algorithm.
+						</blockquote>
+						<small><a href="http://rob-bell.net/2009/06/a-beginners-guide-to-big-o-notation/">http://rob-bell.net/2009/06/a-beginners-guide-to-big-o-notation/</a></small>
+					</section>
+					<section>
+						<h2>Common examples</h2>
+						<ul>
+							<li>O(1): Accessing Array Index (int a = array[5])</li>
+							<li>O(N): Searching for value in array</li>
+							<li>O(N^2): Bubble sort</li>
+							<li>O(log N): Binary search</li>
+						</ul>
+					</section>
+				</section>				
+			
+				<section>
+					<h2>Collections: interfaces and implementations</h2>
+					<ul>
+						<li>List - finite ordered collection of values. ArrayList&lt;T&gt;, LinkedList&lt;T&gt;</li>
+						<li>Set - finite collection of unique values. HashSet&lt;T&gt;, TreeSet&lt;T&gt;</li>
+						<li>Map - collection of {key, value} pairs, such that each possible key appears at most once in the collection. HashMap&lt;T&gt;, TreeMap&lt;T&gt;</li>
+					</ul>
+				</section>	
+
+				<section>
+					<h2>Example: List</h2>
+					<pre>
+						<code data-trim class="java">
+List&lt;Integer&gt; list = new ArrayList&lt;Integer&gt;;
+list.add(1); list.add(3); list.add(1); // [1, 3, 1]
+list.size(); // 3
+list.insert(0, 9); // [9, 1, 3, 1]
+list.remove(2); // [9, 1, 1] 
+list.contains(3); // false
+
+LinkedList&lt;Integer&gt; stack = new LinkedList&lt;Integer&gt;;
+stack.push(1); // [1]
+stack.push(2); // [2, 1]
+stack.push(3); // [3, 2, 1]
+stack.peek(); // 3, stack = [3, 2, 1]
+stack.pop(); // 3, stack = [2, 1]
+						</code>
+					</pre>
+				</section>	
+
+				<section>
+					<h2>Example: Set</h2>
+					<pre>
+						<code data-trim class="java">
+Set&lt;Integer&gt; set = new HashSet&lt;Integer&gt;;
+set.add(1); set.add(3); set.add(1); // { 1, 3 }
+set.size(); // 2
+set.remove(1); // { 3 }
+list.contains(3); // true
+						</code>
+					</pre>
+				</section>	
+
+				<section>
+					<h2>Example: Map</h2>
+					<pre>
+						<code data-trim class="java">
+Map&lt;String, Integer&gt; map = new HashMap&lt;String, Integer&gt;;
+map.put("one", 1); // { "one" -> 1 }
+map.put("two", 2); // { "one" -> 1, "two" -> 2 }
+map.put("three", 3); // { "one" -> 1, "two" -> 2, "three" -> 3 }
+map.containsKey("four"); // true
+						</code>
+					</pre>
+				</section>
+				
+				<section>
+					<h2>Homework</h2>
+					<h3>Re-implement one of collection</h3>
+					<ul>
+						<li>Implement method to add, remove, size contains</li>
+						<li>Additionally - add method sort</li>
+						<li>Don't forget about unite tests, pom.xml and github</li>
+					</ul>
+				</section>
+
+				<section>
+					<h1>Q&A</h1>
+				</section>
+
+				<section>
+					<h1>Thx!</h1>
+					<ul>
+						<li>vk.com/alexkorotkikh</li>
+						<li>twitter.com/alexkorotkikh</li>
+						<li>github.com/alexkorotkikh</li>
+					</ul>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+		</script>
+	</body>
+</html>
